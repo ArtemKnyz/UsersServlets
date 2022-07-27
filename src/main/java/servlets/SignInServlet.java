@@ -45,7 +45,6 @@ public class SignInServlet extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
-
         UserDataSet userDataSet = accountService.getUserByLogin(login);
 
         if (((userDataSet == null)) || (!userDataSet.getPass().equals(pass))) {
