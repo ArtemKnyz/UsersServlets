@@ -1,10 +1,8 @@
 package dao;
 
 import datasets.UserDataSet;
-//import org.h2.engine.Session;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-
 import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
 

@@ -8,7 +8,6 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +23,6 @@ public class AccountService {
     public AccountService() {
         Configuration configuration = getH2Configuration();
         sessionFactory = createSessionFactory(configuration);
-
         sessionIdToProfile = new HashMap<>();
     }
 
@@ -68,13 +66,14 @@ public class AccountService {
 
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         configuration.setProperty("hibernate.connection.driver_class", "org.h2.Driver");
-        configuration.setProperty("hibernate.connection.url", "jdbc:h2:./h2db");
+        configuration.setProperty("hibernate.connection.url", "jdbc:h2:./h2db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
         configuration.setProperty("hibernate.connection.username", hibernate_username);
         configuration.setProperty("hibernate.connection.password", hibernate_password);
         configuration.setProperty("hibernate.show_sql", hibernate_show_sql);
         configuration.setProperty("hibernate.hbm2ddl.auto", hibernate_hbm2ddl_auto);
         return configuration;
     }
+
 
     private static SessionFactory createSessionFactory(Configuration configuration) {
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
